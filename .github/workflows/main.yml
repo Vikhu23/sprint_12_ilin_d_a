@@ -3,17 +3,19 @@ name: Go
 on:
   push:
     branches: ["main"]
+  pull_request:
+    branches: ["main"]
 
 jobs:
 
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-go@v4
+    - uses: actions/checkout@v3
+    - uses: actions/setup-go@v4
 
-      - name: Build
-        run: go build -v ./...
+    - name: Build
+      run: go build -v ./...
 
   lint:
     needs: build
@@ -27,11 +29,11 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-go@v4
+    - uses: actions/checkout@v3
+    - uses: actions/setup-go@v4
 
-      - name: Test
-        run: go test -v ./...
+    - name: Test
+      run: go test -v ./...
 
   deploy:
     name: Push Docker image to Docker Hub
