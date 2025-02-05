@@ -10,9 +10,9 @@ import (
 )
 
 var (
-	// randSource — это источник псевдослучайных чисел.
+	// randSource источник псевдо случайных чисел.
 	// Для повышения уникальности в качестве seed
-	// используется текущее время в unix-формате в виде числа
+	// используется текущее время в unix формате (в виде числа)
 	randSource = rand.NewSource(time.Now().UnixNano())
 	// randRange использует randSource для генерации случайных чисел
 	randRange = rand.New(randSource)
@@ -28,7 +28,7 @@ func getTestParcel() Parcel {
 	}
 }
 
-// TestAddGetDelete проверяет добавление, получение и удаление посылки
+// TestAddGetDelete проверяет добавление, получение и удаление посылку
 func TestAddGetDelete(t *testing.T) {
 	// prepare
 	db, err := sql.Open("sqlite", "tracker.db")
@@ -53,9 +53,8 @@ func TestAddGetDelete(t *testing.T) {
 
 	// delete
 	err = store.Delete(parcel.Number)
-	require.NoError(t, err)
 
-	_, err = store.Get(parcel.Number)
+	stored, err = store.Get(parcel.Number)
 	require.Equal(t, sql.ErrNoRows, err)
 }
 
