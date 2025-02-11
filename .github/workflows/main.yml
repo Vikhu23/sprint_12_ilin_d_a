@@ -17,7 +17,16 @@ jobs:
     - name: Build
       run: go build -v ./...
 
-
+  lint:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: golangci/golangci-lint-action@v6.0.1
+    - uses: actions/checkout@v4.2.2
+    - uses: actions/setup-go@v5
+    - name: Golangci-lint
+      run: golangci-lint run
+      
   tests:
     needs: build
     runs-on: ubuntu-latest
