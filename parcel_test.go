@@ -74,13 +74,13 @@ func TestSetAddress(t *testing.T) {
 	require.NoError(t, err)
 	require.NotEmpty(t, parcel.Number)
 
-	// set address
+	//    set address
 	newAddress := "new test address"
 	err = store.SetAddress(parcel.Number, newAddress)
 
 	require.NoError(t, err)
 
-	// check
+	//   check
 	stored, err := store.Get(parcel.Number)
 
 	require.NoError(t, err)
