@@ -98,7 +98,7 @@ func TestSetStatus(t *testing.T) {
 	store := NewParcelStore(db)
 	parcel := getTestParcel()
 
-	// add
+	// 		add
 	parcel.Number, err = store.Add(parcel)
 
 	require.NoError(t, err)
