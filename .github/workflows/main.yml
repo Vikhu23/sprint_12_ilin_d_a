@@ -21,11 +21,13 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-    - uses: golangci/golangci-lint-action@v6
-      with:
-        skip-cache: True
     - uses: actions/setup-go@v5
     - uses: actions/checkout@v4.2.2
+    - uses: golangci/golangci-lint-action@v6.0.1
+      with:
+        skip-cache: True
+        skip-save-cache: True
+    
 
   tests:
     needs: build
