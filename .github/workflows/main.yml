@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-    - uses: actions/setup-go@v5.3.0
+    - uses: actions/setup-go@v5
 
     - name: Build
       run: go build -v ./...
@@ -23,8 +23,8 @@ jobs:
     steps:
     - uses: golangci/golangci-lint-action@v6
       with:
-        cache: false
-    - uses: actions/setup-go@v5.3.0
+        skip-cache: True
+    - uses: actions/setup-go@v5
     - uses: actions/checkout@v4.2.2
 
   tests:
@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-    - uses: actions/setup-go@v5.3.0
+    - uses: actions/setup-go@v5
 
     - name: Test
       run: go test -v ./...
