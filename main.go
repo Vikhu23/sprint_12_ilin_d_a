@@ -131,7 +131,7 @@ func main() {
 		return
 	}
 
-	// вывод посылок клиента
+	// 		вывод посылок клиента
 	err = service.PrintClientParcels(client)
 	if err != nil {
 		fmt.Println(err)
